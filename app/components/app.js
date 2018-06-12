@@ -25,16 +25,28 @@ const PrivateRoute = ({ component: Component, store: store, actions: actions}) =
 
 class App extends React.Component {
     constructor(props){
-        super(props);        
+        super(props);    
+        this.state = {
+            store: getAppState()
+        }
+        this._onChange = this._onChange.bind(this);    
     }
-    
+    componentDidMount() {
+        AppStore.addChangeListener(this._onChange);
+    }
+    componentWillUnmount() {
+        AppStore.removeChangeListener(this._onChange);
+    }
+    _onChange() {
+       this.setState({store: getAppState()});
+    }
     render() {
         return (
             <Router>
                 <div id='generalDiv'>
-                    <Header />
+                    <Header {...this.state}/>
                     <Switch>                        
-                        <Route path='/login' render={(props) => <Login />} />                                                   
+                        <Route path='/login' render={(props) => <Login {...this.state} actions={actions} />} />                                                   
                     </Switch>
                     <Footer />
                 </div>

@@ -13,7 +13,7 @@ class Login extends React.Component {
         };
         this.handleChange = this.handleChange.bind(this);
         this.changeColor = this.changeColor.bind(this);
-        this.verifyUser = this.verifyUser.bind(this);
+        this.getLogin = this.getLogin.bind(this);
     }
     handleChange(event) {
         if(event.target.className=="user")
@@ -24,30 +24,36 @@ class Login extends React.Component {
     changeColor(){
         this.props.actions.changeValueCode();
     }
-    verifyUser(){
-        this.props.actions.getUserLogin(this.state.user,this.state.password);
-        <Redirect to='/menu' />
+    getLogin(){
+        console.log("user ", this.state.user, "pass ", this.state.password)
+        if(this.state.user.length !== 0 && this.state.password.length !== 0){
+            this.props.actions.getUserLogin(this.state.user,this.state.password);
+        }else{
+            console.log("invalid")
+        }
+        //console.log("estoy entrando a login", this.props)
     }
     renderLogin(){
         return(
             <div className="rightContainer">
-                <span className="title1">Iniciar sesión</span>
-                <span className="title2">Administrador</span>
+                <div className="login">
+                    <span className="title1">Iniciar sesión</span>
+                    <span className="title2">Administrador</span>
 
-                <div className="inputContainer"> 
-                    <span className="ico icon-user-male"></span>
-                    <input className="inputs" type="text" placeholder="Correo electrónico"></input>                
+                    <div className="inputContainer"> 
+                        <span className="ico icon-user-male"></span>
+                        <input className="user" type="text" placeholder="Correo electrónico" onChange={this.handleChange}></input>                
+                    </div>
+
+                    <div className="inputContainer"> 
+                        <span className="ico icon-lock"></span>
+                        <input className="pass" type="password" placeholder="Contraseña" onChange={this.handleChange}></input>                
+                    </div>
+                    <div className="button" onClick={this.getLogin}> 
+                        Iniciar sesión
+                    </div> 
+                    <span className="link">Recuperar contraseña</span>
                 </div>
-
-                <div className="inputContainer"> 
-                    <span className="ico icon-lock"></span>
-                    <input className="inputs" type="password" placeholder="Contraseña"></input>                
-                </div>
-                <div className="button"> 
-                    Iniciar sesión
-                </div> 
-                <span className="link">Recuperar contraseña</span>
-
                                
             </div>
         );
@@ -56,10 +62,10 @@ class Login extends React.Component {
         return(
             <div className="leftContainer">
                 <div>
-                    <img src="../images/Android1.png"/>
+                    <img className="imgPhone" src={require('../../images/Android1.png')}/>
                 </div>
                 <div>
-                    <img src="../images/google_play_icon.png"/>
+                    <img className="imgGoogle" src={require("../../images/google_play_icon.png")}/>
                 </div>
             </div>
         );

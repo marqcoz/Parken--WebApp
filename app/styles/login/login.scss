@@ -1,81 +1,106 @@
 .loginContainer{
     text-align: center;
+    padding: 20px;
     .leftContainer{
-        width: 30%;
+        width: 40%;
         display: inline-block;
         vertical-align: top;
+        .imgPhone{
+            width: 300px;
+        }
+        .imgGoogle{
+            width: 200px;
+        }
     }
     .rightContainer{
-        width: 70%;
+        width: 60%;
         display: inline-block;
         vertical-align: top;
         text-align: center;
-        .title1{
-            display: block;
-            color: #34495E;
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-        .title2{
-            display: block;
-            color: #F44336;
-            font-size: 26px;
-            margin-bottom: 20px;
-        }
-        .inputContainer{
-            width: 80%;
+        .login{
+            padding: 20px;
+            width: 70%;
             margin: 0 auto;
-            margin-bottom: 10px;
-            .nameInput{
-                width: 20%;
+            .title1{
+                display: block;
+                color: #34495E;
+                font-size: 20px;
+                margin-bottom: 10px;
             }
-            .ico{
-                color: #a7a7a7;
-                font-size: 16px;
-                width: 20%;
-                display: inline-block;
-                vertical-align: middle;
+            .title2{
+                display: block;
+                color: #F44336;
+                font-size: 26px;
+                margin-bottom: 20px;
             }
-            .inputs{
-                display: inline-block;
-                vertical-align: middle;
-                width: 80%;
-                height: 40px;
-                font-family: 'Roboto';
-                border: none;
-                border-bottom: 1px solid black;
-                padding-left: 5px;
-                color: #A7A7A7;
+            .inputContainer{
+                width: 70%;
+                margin: 0 auto;
+                margin-bottom: 10px;
+                border-bottom: 1px solid #a7a7a7;
+                .nameInput{
+                    width: 20%;
+                }
+                .ico{
+                    color: #a7a7a7;
+                    font-size: 24px;
+                    width: 20%;
+                    display: inline-block;
+                    vertical-align: middle;
+                    text-align: center;
+                }
+                .user{
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: 80%;
+                    height: 40px;
+                    font-family: 'Roboto';
+                    border: none;
+                    padding-left: 5px;
+                    color: black;
+                    font-size: 18px;
+                }
+                .pass{
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: 80%;
+                    height: 40px;
+                    font-family: 'Roboto';
+                    border: none;
+                    padding-left: 5px;
+                    color: black;
+                    font-size: 18px;
+                }
             }
-        }
-        .link{
-            font-size: 14px;
-            text-align: center;
-            color: #F44336;
-            border-bottom: 1px solid #F44336;
-            cursor: pointer;
-            margin:0 auto;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            display: block;
-            width: 35%;
-            &:hover{
-                color: #ea7c74;
+            .link{
+                font-size: 12px;
+                text-align: center;
+                color: #F44336;
+                cursor: pointer;
+                margin: 0 auto;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                display: block;
+                width: 35%;
+                text-decoration: underline;
+                &:hover{
+                    color: #ea7c74;
+                }
             }
-        }
-        .button{
-            width: 80%;
-            background: #F44336;
-            color: white;
-            height: 30px;
-            border-radius: 5px;
-            line-height: 30px;
-            text-align: center;
-            margin: 0 auto;
-            margin-bottom: 20px;
-            cursor: pointer;
-            &:hover{
-                box-shadow: 3px 3px 10px #000000;
+            .button{
+                width: 40%;
+                background: #F44336;
+                color: white;
+                height: 30px;
+                border-radius: 5px;
+                line-height: 30px;
+                text-align: center;
+                margin: 0 auto;
+                margin-top: 25px;
+                cursor: pointer;
+                &:hover{
+                    box-shadow: 3px 3px 10px #000000;
+                }
             }
         }
     }

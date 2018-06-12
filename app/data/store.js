@@ -17,50 +17,40 @@ let AppData = {
             count: 0
         },
         authenticationInfo: {
-            code: null,
-            id: null,
-            name: null,
-            type: null
+            success: null,
+            id: null
         },
         
     },
     
     getUserLogin(action) {
-        axios.get('http://localhost:8088/pt1.pt2/webapi/personal/getLogin', {
-            params: {
-                user: action.user,
-                pass: action.pass
-            }
+        axios.post('http://192.168.1.74:3000/login', {
+            correo: action.user,
+            contrasena: action.pass,
+            app: "1"
+            
         })
         .then(function (response) {
-            if(response.data.infoLogin.code===0){
-                AppData.data.tries.count++;
+            console.log("response login: ", response)
+            if(response.data.success===1){
+                AppData.data.isAuthenticated=true;
+                AppData.data.authenticationInfo=response.data;
+                if (typeof(Storage) !== "undefined") {
+                    localStorage.id = response.data.id;
+                } else {
+                    console.log("Sorry! No Web Storage support..")
+                }
+                AppStore.emitChange();
+                            
+            }else{
                 AppData.data.isAuthenticated=false;
                 AppData.data.authenticationInfo=response.data.infoLogin; 
-                if(AppData.data.tries.count >= 3){
-                    AppData.data.authenticationInfo.type="Has excedido el número de intentos permitidos"
+                if (typeof(Storage) !== "undefined") {
+                    localStorage.id = 0;
+                } else {
+                    console.log("Sorry! No Web Storage support..")
                 }
-                AppStore.emitChange();                
-            }else if(response.data.infoLogin.code===1){
-                if(response.data.infoLogin.type === "recepcion" || response.data.infoLogin.type === "instructor"){
-                    AppData.data.isAuthenticated=true;
-                    AppData.data.authenticationInfo=response.data.infoLogin;
-                    if (typeof(Storage) !== "undefined") {
-                        localStorage.code = response.data.infoLogin.code;
-                        localStorage.id = response.data.infoLogin.id;
-                        localStorage.name = response.data.infoLogin.name;
-                        localStorage.type = response.data.infoLogin.type;
-                    } else {
-                        console.log("Sorry! No Web Storage support..")
-                    }
-                    AppStore.emitChange();
-                }else if(response.data.infoLogin.type === "asistente"){
-                    AppData.data.isAuthenticated=false;
-                    AppData.data.authenticationInfo=response.data.infoLogin;
-                    AppData.data.authenticationInfo.code=0;
-                    AppData.data.authenticationInfo.type="Tu usuario no cuenta con permisos para accesar";
-                    AppStore.emitChange();
-                }
+                AppStore.emitChange();
             }
         })
         .catch(function (error) {
