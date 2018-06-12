@@ -45,7 +45,7 @@ class Login extends React.Component {
                 <span className="link">Recuperar contraseña </span>
 
                 <div className="button"> 
-                    Iniciar sesión
+                    Iniciar sesión jajajaja
                 </div>                
             </div>
         );
