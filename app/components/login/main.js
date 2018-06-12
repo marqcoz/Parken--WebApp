@@ -30,29 +30,44 @@ class Login extends React.Component {
     }
     renderLogin(){
         return(
-            <div>
+            <div className="rightContainer">
                 <span className="title1">Iniciar sesión</span>
                 <span className="title2">Administrador</span>
 
                 <div className="inputContainer"> 
+                    <span className="ico icon-user-male"></span>
                     <input className="inputs" type="text" placeholder="Correo electrónico"></input>                
                 </div>
 
                 <div className="inputContainer"> 
+                    <span className="ico icon-lock"></span>
                     <input className="inputs" type="password" placeholder="Contraseña"></input>                
                 </div>
-
-                <span className="link">Recuperar contraseña </span>
-
                 <div className="button"> 
-                    Iniciar sesión jajajaja
-                </div>                
+                    Iniciar sesión
+                </div> 
+                <span className="link">Recuperar contraseña</span>
+
+                               
+            </div>
+        );
+    }
+    renderImages(){
+        return(
+            <div className="leftContainer">
+                <div>
+                    <img src="../images/Android1.png"/>
+                </div>
+                <div>
+                    <img src="../images/google_play_icon.png"/>
+                </div>
             </div>
         );
     }
     render() {
 		return (
 			<div className='loginContainer'>				            
+                {this.renderImages()}
                 {this.renderLogin()}
 			</div>
 		);

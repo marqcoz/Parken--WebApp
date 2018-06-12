@@ -1,7 +1,11 @@
 @import "header/header.scss";
 @import "footer/footer.scss";
+@import "variables.scss";
+@import "icons.scss";
 
 @import "login/login.scss";
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+
 * {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -9,4 +13,8 @@
 	outline: none;
 	padding: 0;
 	text-decoration: none;
+}
+
+#app{
+    font-family: 'Roboto Slab', serif;
 }

@@ -58,10 +58,8 @@ var config = {
             }
         ]
     },
-    devtool: 'source-map',
     devServer:{
-        historyApiFallback: true,
-        contentBase: 'dist'
+        historyApiFallback: true
     },
     plugins: [
         extractSass,
